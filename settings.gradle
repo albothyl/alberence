@@ -1,0 +1,4 @@
+rootProject.name = 'alberence'
+include 'alberence-interface'
+include 'alberence-domain'
+

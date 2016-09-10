@@ -1,0 +1,26 @@
+apply plugin: 'war'
+
+war {
+	baseName = 'alberence'
+	version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+	// Domain =====================================================
+	compile project(':alberence-domain')
+
+	// Spring =====================================================
+	compile("org.springframework:spring-webmvc:${springVersion}")
+	compile("org.springframework:spring-web:${springVersion}")
+
+	// Security
+	compile("org.springframework.security:spring-security-core:${securityVersion}")
+	compile("org.springframework.security:spring-security-web:${securityVersion}")
+	compile("org.springframework.security:spring-security-config:${securityVersion}")
+
+	// Servlet ====================================================
+	compile("javax.servlet:javax.servlet-api:${servletVersion}")
+
+	// Template engine
+	compile("com.github.jknack:handlebars-springmvc:${handelbarViewResolverVersion}")
+}
