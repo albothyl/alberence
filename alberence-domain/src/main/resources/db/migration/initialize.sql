@@ -1,0 +1,13 @@
+CREATE DATABASE alberence DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+
+CREATE USER 'fly'@'%' IDENTIFIED BY 'gnjfgnjf!2';
+CREATE USER 'fly'@'localhost' IDENTIFIED BY 'gnjfgnjf!2';
+
+USE mysql;
+
+-- DB 별 권한 부여
+GRANT ALL PRIVILEGES ON *.* TO 'fly'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'fly'@'localhost' WITH GRANT OPTION;
+
+-- 마무리.
+FLUSH PRIVILEGES;

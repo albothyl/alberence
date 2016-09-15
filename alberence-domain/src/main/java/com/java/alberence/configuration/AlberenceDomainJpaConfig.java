@@ -1,6 +1,6 @@
 package com.java.alberence.configuration;
 
-import com.java.alberence.domain.AlberenceDomain;
+import com.java.alberence.AlberenceDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

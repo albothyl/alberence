@@ -1,3 +1,15 @@
+apply plugin: 'org.flywaydb.flyway'
+
+flyway {
+	url = "jdbc:mysql://127.0.0.1:3306?useSSL=false"
+	driver = "com.mysql.jdbc.Driver"
+	user = 'fly'
+	password = 'gnjfgnjf!2'
+	schemas = ['alberence']
+	table = 'flyway_migration_history'
+	encoding = 'UTF8'
+}
+
 dependencies {
 	// Spring ==============================================================================
 	compile("org.springframework:spring-orm:${springVersion}")
