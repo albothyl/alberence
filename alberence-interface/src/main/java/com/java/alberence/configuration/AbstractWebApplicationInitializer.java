@@ -107,7 +107,8 @@ public abstract class AbstractWebApplicationInitializer implements WebApplicatio
 	 */
 	protected ServletRegistration.Dynamic addDispatcherServlet(ServletContext servletContext, String servletName, Class<?> servletContextConfigClass,
 		boolean allowBeanDefinitionOverriding, String... mappings) {
-		return addDispatcherServlet(servletContext, servletName, new Class<?>[] { servletContextConfigClass }, allowBeanDefinitionOverriding, mappings);
+		return addDispatcherServlet(servletContext, servletName, new Class<?>[] { servletContextConfigClass }, allowBeanDefinitionOverriding,
+			mappings);
 	}
 
 	/**

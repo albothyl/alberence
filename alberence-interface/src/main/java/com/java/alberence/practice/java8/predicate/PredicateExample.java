@@ -2,6 +2,8 @@ package com.java.alberence.practice.java8.predicate;
 
 import com.java.alberence.practice.java8.common.AppleUtils;
 import com.java.alberence.practice.java8.common.Apple;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -9,7 +11,10 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Slf4j
+@SuppressWarnings("PMD.UnusedLocalVariable")
 public class PredicateExample {
+
+	private PredicateExample() {}
 
 	public static void main(String[] args) {
 		List<Apple> greenAppleList = AppleUtils.generateAppleList().stream()
@@ -43,6 +48,7 @@ public class PredicateExample {
 
 		//Lambda 로 Predicate 생성할 수 있음
 		Predicate<Integer> nonEmptyPredicate = (Integer a) -> 150 < a;
+		log.info(nonEmptyPredicate.toString());
 	}
 
 

@@ -10,7 +10,10 @@ import java.util.stream.Collectors;
 import static com.java.alberence.practice.java8.common.AppleUtils.generateAppleList;
 
 @Slf4j
+@SuppressWarnings("PMD.UnusedLocalVariable")
 public class ConsumerExample {
+
+	private ConsumerExample() {}
 
 	public static void main(String[] args) {
 		List<Apple> appleList = generateAppleList();

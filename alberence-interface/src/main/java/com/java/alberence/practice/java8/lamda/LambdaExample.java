@@ -7,16 +7,20 @@ import com.java.alberence.practice.java8.common.AppleUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Slf4j
+@SuppressWarnings("PMD.UnusedLocalVariable")
 public class LambdaExample {
 
+	private LambdaExample() {}
+
 	/*
-	TODO 질문 : Lambda는 익명 클래스를 단순화한것이라고 볼 수 있는데, 익명클래스처럼 객체를 생성하거나 메모리 영역을 사용하는가?
+	TODO 질문 : Lambda 는 익명 클래스를 단순화한것이라고 볼 수 있는데, 익명클래스처럼 객체를 생성하거나 메모리 영역을 사용하는가?
 	 */
 	public static void main(String[] args) {
 		List<Apple> appleList = AppleUtils.generateAppleList();
@@ -45,10 +49,11 @@ public class LambdaExample {
 
 		//Lambda 로 Predicate 생성
 		Predicate<String> nonEmptyPredicate = (String s) -> StringUtils.isEmpty(s);
+		log.info(nonEmptyPredicate.toString());
 	}
 
 	//java util
-	private static class AppleComparator implements Comparator<Apple> {
+	private static class AppleComparator implements Comparator<Apple>, Serializable {
 		@Override
 		public int compare(Apple left, Apple right) {
 			return left.getWeight().compareTo(right.getWeight());
@@ -56,7 +61,7 @@ public class LambdaExample {
 	}
 
 	//guava
-	private static class AppleOrdering extends Ordering<Apple> {
+	private static class AppleOrdering extends Ordering<Apple> implements Serializable {
 		@Override
 		public int compare(Apple left, Apple right) {
 			return Ints.compare(left.getWeight(), right.getWeight());

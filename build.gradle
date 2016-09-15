@@ -38,6 +38,7 @@ ext {
     guavaVersion = '19.0'
     commonsIoVersion = '2.5'
     commonsLang3Version = '3.4'
+    jacocoVersion = '0.7.7.201606060606'
 
 //  Test ==================================
     spockVersion = '1.0-groovy-2.4'
@@ -51,6 +52,7 @@ subprojects {
     apply plugin: 'eclipse'
     apply plugin: 'eclipse-wtp'
     apply plugin: 'idea'
+    apply plugin: 'jacoco'
     apply plugin: "org.sonarqube"
     apply plugin: "io.github.divinespear.jpa-schema-generate"
 
@@ -64,6 +66,23 @@ subprojects {
 
     task wrapper(type: Wrapper) {
         gradleVersion = '2.9'
+    }
+
+    jacoco {
+        toolVersion = "${jacocoVersion}"
+    }
+    jacocoTestReport.enabled = true
+
+
+    sonarqube {
+        properties {
+            property "sonar.projectName", "Alberence"
+            property "sonar.projectKey", "Alberence"
+            property 'sonar.projectVersion', "${version}"
+            property "sonar.sourceEncoding", "UTF-8"
+            property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/jacoco.exec"
+            property "sonar.exclusions", "file:**/generated/**"
+        }
     }
 
     dependencies {
