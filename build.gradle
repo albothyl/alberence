@@ -12,13 +12,15 @@ ext {
     hibernateVersion = '5.2.2.Final'
     hibernateJpaVersion = '1.0.0.Final'
     jadiraUserTypeVersion = '6.0.0.GA'
-    mysqlConnectorVersion = '6.0.3'
+    mysqlConnectorVersion = '5.1.38'
 //  Logging ===============================
     slf4jVersion = '1.7.21'
     logbackVersion = '1.1.7'
 //  Other =================================
     lombokVersion = '1.16.10'
     guavaVersion = '19.0'
+    commonsIoVersion = '2.5'
+    commonsLang3Version = '3.4'
 //  Test ==================================
     spockVersion = '1.0-groovy-2.4'
     junitVerison = '4.12'

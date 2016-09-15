@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>dataSource - test</comment>
+    <!-- mysql connect parameter -->
+    <entry key="base.mysql.jdbc.url">jdbc:mysql://127.0.0.1:3306/springTest?useUnicode=true&amp;characterEncoding=UTF8</entry>
+    <entry key="base.mysql.jdbc.username">albothyl</entry>
+    <entry key="base.mysql.jdbc.password">dkvk!2</entry>
+
+    <!-- hibernate parameter -->
+    <entry key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</entry>
+    <entry key="hibernate.show_sql">true</entry>
+    <entry key="hibernate.format_sql">true</entry>
+    <entry key="hibernate.hbm2ddl.auto">validate</entry>
+    <entry key="hibernate.ejb.naming_strategy">org.hibernate.cfg.DefaultNamingStrategy</entry>
+
+    <!-- AuditingEntityListener parameter -->
+    <entry key="jadira.usertype.autoRegisterUserTypes">true</entry>
+    <entry key="jadira.usertype.javaZone">jvm</entry>
+    <entry key="jadira.usertype.databaseZone">jvm</entry>
+
+    <!-- Handlebars Caching -->
+    <entry key="handlebars.caching">false</entry>
+</properties>

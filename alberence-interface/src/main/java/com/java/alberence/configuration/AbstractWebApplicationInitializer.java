@@ -28,7 +28,7 @@ public abstract class AbstractWebApplicationInitializer implements WebApplicatio
 	/**
 	 * Root Application Context 적재시 Initializer Class
 	 */
-//	public static final Class<?> APPLICATION_CONTEXT_INITIALIZER_CLASS = InterfacesConfigurationPropertiesApplicationContextInitializer.class;
+	public static final Class<?> APPLICATION_CONTEXT_INITIALIZER_CLASS = ConfigurationPropertiesApplicationContextInitializer.class;
 
 	/**
 	 * Spring Root Application Context를 적재한다.
@@ -57,8 +57,7 @@ public abstract class AbstractWebApplicationInitializer implements WebApplicatio
 
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 
-		servletContext.setInitParameter(ContextLoader.CONTEXT_INITIALIZER_CLASSES_PARAM, "AlberenceInitialContext");
-//		servletContext.setInitParameter(ContextLoader.CONTEXT_INITIALIZER_CLASSES_PARAM, APPLICATION_CONTEXT_INITIALIZER_CLASS.getName());
+		servletContext.setInitParameter(ContextLoader.CONTEXT_INITIALIZER_CLASSES_PARAM, APPLICATION_CONTEXT_INITIALIZER_CLASS.getName());
 
 		return rootContext;
 	}

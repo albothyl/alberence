@@ -7,7 +7,7 @@ public class AlberenceWebApplicationInitializer extends AbstractWebApplicationIn
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-//		loadRootApplicationContext(servletContext, DissueDomainApplicationContextConfig.class);
+		loadRootApplicationContext(servletContext, AlberenceDomainApplicationContextConfig.class);
 		loadDefaultFilters(servletContext);
 		addDispatcherServlet(servletContext, "webServlet", AlberenceWebServletApplicationContextConfig.class, "/");
 	}

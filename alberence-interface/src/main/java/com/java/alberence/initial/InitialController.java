@@ -1,4 +1,4 @@
-package com.java.alberence.initialization;
+package com.java.alberence.initial;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -7,15 +7,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @Controller
-public class AlberenceController {
+public class InitialController {
 
-	@RequestMapping("hello2")
+	@RequestMapping("/hello")
 	public ModelAndView hello() {
-		log.info("come in initialization controller");
+		log.info("come in initial controller");
 
 		ModelAndView mav = new ModelAndView("index");
-		mav.addObject("Title", "Hello Alberence");
-		mav.addObject("END", "END Alberence");
+		mav.addObject("Title", "Alberence");
+		mav.addObject("Content", "Hello Alberence");
 
 		return mav;
 	}
