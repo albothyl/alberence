@@ -14,7 +14,7 @@ buildscript {
 ext {
 //  Root ==================================
     springVersion = '4.3.2.RELEASE'
-    securityVersion = '4.1.3.RELEASE'
+    springSecurityVersion = '4.1.3.RELEASE'
     groovyVersion = '2.3.11'
 
 //  Interface =============================
@@ -88,6 +88,7 @@ subprojects {
     dependencies {
         // Groovy =====================================================
         compile("org.codehaus.groovy:groovy-all:${groovyVersion}")
+
         // Spring =====================================================
         compile("org.springframework:spring-core:${springVersion}") {
             exclude group: 'commons-logging'

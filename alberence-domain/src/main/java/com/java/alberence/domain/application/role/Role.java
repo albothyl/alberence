@@ -1,22 +1,20 @@
-package com.java.alberence.domain.practice.java8;
+package com.java.alberence.domain.application.role;
 
 import com.java.alberence.domain.AbstractEntity;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@ToString
+@Table(name = "roles")
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "create")
-@Table(name = "apples")
-public class Apple extends AbstractEntity {
+public class Role extends AbstractEntity {
 	private String name;
-	private String color;
-	private int weight;
-	private String area;
-	private long price;
+	private boolean used;
+	private String description;
 }

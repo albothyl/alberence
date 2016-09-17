@@ -14,9 +14,9 @@ dependencies {
 	compile("org.springframework:spring-web:${springVersion}")
 
 	// Security
-	compile("org.springframework.security:spring-security-core:${securityVersion}")
-	compile("org.springframework.security:spring-security-web:${securityVersion}")
-	compile("org.springframework.security:spring-security-config:${securityVersion}")
+	compile("org.springframework.security:spring-security-core:${springSecurityVersion}")
+	compile("org.springframework.security:spring-security-web:${springSecurityVersion}")
+	compile("org.springframework.security:spring-security-config:${springSecurityVersion}")
 
 	// Servlet ====================================================
 	compile("javax.servlet:javax.servlet-api:${servletVersion}")

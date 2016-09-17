@@ -1,6 +1,7 @@
 import com.java.alberence.configuration.AlberenceDomainJpaConfig
 import com.java.alberence.configuration.ConfigurationPropertiesApplicationContextInitializer
 import com.java.alberence.configuration.profiles.AlberenceProfiles
+import com.java.alberence.domain.application.member.MemberRepository
 import com.java.alberence.domain.practice.java8.Apple
 import com.java.alberence.domain.practice.java8.AppleRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,14 +15,18 @@ import java.time.LocalDateTime
 
 @Transactional
 @Rollback(value = false)
-@ActiveProfiles(profiles = AlberenceProfiles.SPRING_TEST)
+@ActiveProfiles(profiles = AlberenceProfiles.LOCAL)
+//@ActiveProfiles(profiles = AlberenceProfiles.SPRING_TEST)
 @ContextConfiguration(initializers = ConfigurationPropertiesApplicationContextInitializer, classes = [AlberenceDomainJpaConfig])
 class RealDataSaveEntityTest extends Specification {
 
 	@Autowired
 	def AppleRepository appleRepository
 
-	def "AppleDomainTest"() {
+	@Autowired
+	def MemberRepository memberRepository
+
+	def "Apple Test"() {
 		given:
 		def apple = Apple.create("aoi", "green", 100, "korea", 2_000)
 		println(LocalDateTime.now())
@@ -29,6 +34,14 @@ class RealDataSaveEntityTest extends Specification {
 		def save = appleRepository.save(apple)
 		println(appleRepository.getOne(save.getId()).toString())
 		println(appleRepository.getOne(save.getId()).getCreatedAt())
+		then:
+		noExceptionThrown()
+	}
+
+	def "Member Test"() {
+		when:
+		def member = memberRepository.findByEmailAndSecessionFalse("jjhwqqq@naver.com")
+		println("------------------------------")
 		then:
 		noExceptionThrown()
 	}
