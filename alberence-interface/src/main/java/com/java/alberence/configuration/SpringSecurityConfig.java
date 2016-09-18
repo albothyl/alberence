@@ -4,13 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -28,8 +31,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-//				.antMatchers("/admin/**").hasRole("ADMIN")
 				.antMatchers("/hello").permitAll()
+				.antMatchers("/session/list").hasAuthority("VIEW_USER_SESSIONS").anyRequest().authenticated()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -42,7 +45,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutUrl("/logout")
 				.logoutSuccessUrl("/logoutSuccess")
 				.invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID")
 				.and()
+			.sessionManagement()
+				.sessionFixation().changeSessionId()
+				.maximumSessions(1).maxSessionsPreventsLogin(true)
+				.sessionRegistry(new SessionRegistryImpl())
+				.and().and()
 			.csrf().disable();
 	}
 }
