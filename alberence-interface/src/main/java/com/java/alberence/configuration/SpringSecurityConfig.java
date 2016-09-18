@@ -6,6 +6,7 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.session.SessionRegistryImpl;
@@ -28,8 +29,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 			.eraseCredentials(true);
 	}
 
-	protected void configure(HttpSecurity http) throws Exception {
-		http
+	protected void configure(HttpSecurity security) throws Exception {
+		security
+			.csrf().disable()
 			.authorizeRequests()
 				.antMatchers("/hello").permitAll()
 				.antMatchers("/session/list").hasAuthority("VIEW_USER_SESSIONS").anyRequest().authenticated()
@@ -50,8 +52,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionManagement()
 				.sessionFixation().changeSessionId()
 				.maximumSessions(1).maxSessionsPreventsLogin(true)
-				.sessionRegistry(new SessionRegistryImpl())
-				.and().and()
-			.csrf().disable();
+				.sessionRegistry(new SessionRegistryImpl());
 	}
 }

@@ -61,7 +61,7 @@ public class SecurityController {
 		return mav;
 	}
 
-	@Secured("ADMIN")
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/admin/main")
 	public ModelAndView main() {
 		log.info("==== main ===");
