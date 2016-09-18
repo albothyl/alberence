@@ -1,7 +1,7 @@
 import com.java.alberence.configuration.AlberenceDomainJpaConfig
 import com.java.alberence.configuration.ConfigurationPropertiesApplicationContextInitializer
 import com.java.alberence.configuration.profiles.AlberenceProfiles
-import com.java.alberence.domain.application.member.MemberRepository
+import com.java.alberence.domain.member.MemberRepository
 import com.java.alberence.domain.practice.java8.Apple
 import com.java.alberence.domain.practice.java8.AppleRepository
 import org.springframework.beans.factory.annotation.Autowired

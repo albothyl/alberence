@@ -1,4 +1,4 @@
-package com.java.alberence.initial;
+package com.java.alberence.application.initial;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

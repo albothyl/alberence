@@ -1,9 +1,9 @@
-package com.java.alberence.practice.java8.lamda;
+package com.java.alberence.application.practice.java8.lamda;
 
 import com.google.common.collect.Ordering;
 import com.google.common.primitives.Ints;
-import com.java.alberence.practice.java8.common.Apple;
-import com.java.alberence.practice.java8.common.AppleUtils;
+import com.java.alberence.application.practice.java8.common.Apple;
+import com.java.alberence.application.practice.java8.common.AppleUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 

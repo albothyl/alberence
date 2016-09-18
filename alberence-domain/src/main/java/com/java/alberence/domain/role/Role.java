@@ -1,4 +1,4 @@
-package com.java.alberence.domain.application.role;
+package com.java.alberence.domain.role;
 
 import com.java.alberence.domain.AbstractEntity;
 import lombok.AllArgsConstructor;

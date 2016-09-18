@@ -1,9 +1,7 @@
-package com.java.alberence.practice.java8.predicate;
+package com.java.alberence.application.practice.java8.predicate;
 
-import com.java.alberence.practice.java8.common.AppleUtils;
-import com.java.alberence.practice.java8.common.Apple;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import com.java.alberence.application.practice.java8.common.AppleUtils;
+import com.java.alberence.application.practice.java8.common.Apple;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;

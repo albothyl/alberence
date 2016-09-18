@@ -1,4 +1,4 @@
-package com.java.alberence.practice.java8.common;
+package com.java.alberence.application.practice.java8.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

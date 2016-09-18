@@ -1,7 +1,7 @@
-package com.java.alberence.security;
+package com.java.alberence.application.security;
 
-import com.java.alberence.domain.application.member.Member;
-import com.java.alberence.domain.application.member.MemberFinder;
+import com.java.alberence.domain.member.Member;
+import com.java.alberence.application.member.MemberFinder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,7 @@
-package com.java.alberence.domain.application.member;
+package com.java.alberence.application.member;
 
+import com.java.alberence.domain.member.Member;
+import com.java.alberence.domain.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
