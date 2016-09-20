@@ -22,9 +22,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-	@Autowired
-	private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
-
 	@Override
 	protected void configure(AuthenticationManagerBuilder builder) throws Exception {
 		builder
@@ -38,7 +35,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		security
 			.csrf().disable()
 			.exceptionHandling()
-				.authenticationEntryPoint(restAuthenticationEntryPoint)
+				.authenticationEntryPoint(new RestAuthenticationEntryPoint())
 				.and()
 			.authorizeRequests()
 				.antMatchers("/hello").permitAll()
