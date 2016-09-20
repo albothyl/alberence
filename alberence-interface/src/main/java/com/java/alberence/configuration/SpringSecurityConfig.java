@@ -1,11 +1,11 @@
 package com.java.alberence.configuration;
 
-import com.java.alberence.application.security.MySavedRequestAwareAuthenticationSuccessHandler;
 import com.java.alberence.application.security.RestAuthenticationEntryPoint;
+import com.java.alberence.application.security.RestLoginFailureHandler;
+import com.java.alberence.application.security.RestLoginSuccessHandler;
+import com.java.alberence.application.security.RestLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -26,14 +25,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
-	@Autowired
-	private MySavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
-
 	@Override
 	protected void configure(AuthenticationManagerBuilder builder) throws Exception {
 		builder
 			.userDetailsService(userDetailsService)
-			.passwordEncoder(new ShaPasswordEncoder(256)) //NOSONAR
+//			.passwordEncoder(new ShaPasswordEncoder(256)) //NOSONAR
 			.and()
 			.eraseCredentials(true);
 	}
@@ -53,12 +49,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/auth/login")
 				.usernameParameter("username")
 				.passwordParameter("password")
-				.successHandler(authenticationSuccessHandler)
-				.failureHandler(new SimpleUrlAuthenticationFailureHandler())
+				.successHandler(new RestLoginSuccessHandler())
+				.failureHandler(new RestLoginFailureHandler())
 				.and()
 			.logout()
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/logoutSuccess")
+				.logoutUrl("/auth/logout")
+				.logoutSuccessHandler(new RestLogoutSuccessHandler())
 				.invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID")
 				.and()
@@ -67,14 +63,5 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.maximumSessions(1).maxSessionsPreventsLogin(true)
 				.sessionRegistry(new SessionRegistryImpl())
 			;
-	}
-
-	@Bean
-	public MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler(){
-		return new MySavedRequestAwareAuthenticationSuccessHandler();
-	}
-	@Bean
-	public SimpleUrlAuthenticationFailureHandler myFailureHandler(){
-		return new SimpleUrlAuthenticationFailureHandler();
 	}
 }

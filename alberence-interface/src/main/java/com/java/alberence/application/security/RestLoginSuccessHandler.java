@@ -12,14 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+public class RestLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
 	private RequestCache requestCache = new HttpSessionRequestCache();
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-		throws ServletException, IOException {
+		throws IOException, ServletException {
+		handle(request, response, authentication);
+		clearAuthenticationAttributes(request);
+	}
 
+	protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+		throws IOException, ServletException {
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 
 		if (savedRequest == null) {
@@ -34,11 +39,6 @@ public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAu
 			clearAuthenticationAttributes(request);
 			return;
 		}
-
 		clearAuthenticationAttributes(request);
-	}
-
-	public void setRequestCache(RequestCache requestCache) {
-		this.requestCache = requestCache;
 	}
 }

@@ -4,6 +4,7 @@ import com.java.alberence.domain.member.Member;
 import com.java.alberence.application.member.MemberFinder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @Transactional(readOnly = true)
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -31,6 +33,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			.stream()
 			.map(memberAuth -> new Authority(memberAuth.getRole().getName()))
 			.collect(Collectors.toList());
+
+		log.info("email : {}, password : {}, authority : {}", member.getEmail(), member.getPassword(), authorities.get(0).getAuthority());
 
 		return new User(member.getEmail(), member.getPassword(), authorities);
 	}
