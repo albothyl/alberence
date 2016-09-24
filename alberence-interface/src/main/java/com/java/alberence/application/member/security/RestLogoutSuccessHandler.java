@@ -1,4 +1,4 @@
-package com.java.alberence.application.security;
+package com.java.alberence.application.member.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;

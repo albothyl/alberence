@@ -1,4 +1,4 @@
-package com.java.alberence.application.security;
+package com.java.alberence.application.member.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

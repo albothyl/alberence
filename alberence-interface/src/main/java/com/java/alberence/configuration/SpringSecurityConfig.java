@@ -1,9 +1,9 @@
 package com.java.alberence.configuration;
 
-import com.java.alberence.application.security.RestAuthenticationEntryPoint;
-import com.java.alberence.application.security.RestLoginFailureHandler;
-import com.java.alberence.application.security.RestLoginSuccessHandler;
-import com.java.alberence.application.security.RestLogoutSuccessHandler;
+import com.java.alberence.application.member.security.RestAuthenticationEntryPoint;
+import com.java.alberence.application.member.security.RestLoginFailureHandler;
+import com.java.alberence.application.member.security.RestLoginSuccessHandler;
+import com.java.alberence.application.member.security.RestLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

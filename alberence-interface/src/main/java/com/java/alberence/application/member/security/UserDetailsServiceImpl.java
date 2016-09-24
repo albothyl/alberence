@@ -1,4 +1,4 @@
-package com.java.alberence.application.security;
+package com.java.alberence.application.member.security;
 
 import com.java.alberence.application.member.MemberFinder;
 import com.java.alberence.domain.member.Member;
