@@ -57,7 +57,7 @@ public class ConfigurationPropertiesApplicationContextInitializer implements App
 	}
 
 	/**
-	 * 설정 파일들의 경로를 paths에 추가한다.
+	 * 설정 파일들의 경로를 paths 에 추가한다.
 	 * @param profile Spring Profile
 	 * @param paths 설정 파일 경로 모음
 	 */
@@ -83,7 +83,7 @@ public class ConfigurationPropertiesApplicationContextInitializer implements App
 		return activeProfiles[0];
 	}
 
-	/** location에서 profile placeholder를 실제 프로필로 전환한 문자열을 리턴한다. */
+	/** location 에서 profile placeholder 를 실제 프로필로 전환한 문자열을 리턴한다. */
 	protected String getLocationWithProfile(String location, String profile) {
 		return location.replaceAll("\\$\\{" + ACTIVE_PROFILES_PROPERTY_NAME + "}", profile);
 	}

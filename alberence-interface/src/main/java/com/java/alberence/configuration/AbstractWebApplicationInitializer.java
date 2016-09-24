@@ -18,9 +18,9 @@ import javax.servlet.ServletRegistration;
 import java.util.EnumSet;
 
 /**
- * 먼저 loadRootApplicationContext를 실행하고,
- * 후에 loadDefaultFilters를 실행한 다음,
- * addDispatcherServlet으로 원하는 Spring Dispatcher Servlet을 추가한다.
+ * 먼저 loadRootApplicationContext 를 실행하고,
+ * 후에 loadDefaultFilters 를 실행한 다음,
+ * addDispatcherServlet 으로 원하는 Spring Dispatcher Servlet 을 추가한다.
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public abstract class AbstractWebApplicationInitializer implements WebApplicationInitializer {
@@ -42,10 +42,10 @@ public abstract class AbstractWebApplicationInitializer implements WebApplicatio
 	}
 
 	/**
-	 * Spring Root Application Context를 적재한다.
+	 * Spring Root Application Context 를 적재한다.
 	 *
 	 * @param servletContext                servletContext
-	 * @param allowBeanDefinitionOverriding bean name의 중복 가능여부
+	 * @param allowBeanDefinitionOverriding bean name 의 중복 가능여부
 	 * @param configClasses                 Root Application Context Config classes
 	 * @return Spring Root Application Context
 	 */
@@ -101,7 +101,7 @@ public abstract class AbstractWebApplicationInitializer implements WebApplicatio
 	 * @param servletContext            servletContext
 	 * @param servletName               서블릿 이름. 기본은 'webServlet'
 	 * @param servletContextConfigClass Spring Servlet Application Context Config class
-	 * @param allowBeanDefinitionOverriding bean name의 중복 가능여부
+	 * @param allowBeanDefinitionOverriding bean name 의 중복 가능여부
 	 * @param mappings                  Servlet Mappings
 	 * @return Servlet 객체
 	 */
@@ -137,8 +137,8 @@ public abstract class AbstractWebApplicationInitializer implements WebApplicatio
 	 */
 	protected ServletRegistration.Dynamic addDispatcherServlet(ServletContext servletContext, String servletName,
 		Class<?>[] servletContextConfigClasses, boolean allowBeanDefinitionOverriding, String... mappings) {
-		Assert.notNull(servletName, "servletName을 지정하세요.");
-		Assert.notEmpty(servletContextConfigClasses, "Servlet을 위한 Spring ApplicationContext Config Class들을 지정하세요.");
+		Assert.notNull(servletName, "servletName 을 지정하세요.");
+		Assert.notEmpty(servletContextConfigClasses, "Servlet 을 위한 Spring ApplicationContext Config Class 들을 지정하세요.");
 		Assert.notEmpty(mappings, "Servlet 매핑을 지정하세요.");
 
 		AnnotationConfigWebApplicationContext servletApplicationContext = new AnnotationConfigWebApplicationContext();
