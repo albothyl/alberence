@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.java.alberence.application.util.JsonUtils.ObjectToJsonString;
+import static javax.servlet.http.HttpServletResponse.SC_OK;
+
 public class RestLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
 	private RequestCache requestCache = new HttpSessionRequestCache();
@@ -19,8 +22,15 @@ public class RestLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 		throws IOException, ServletException {
-		
+
+		response.setStatus(SC_OK);
+		response.setContentType("application/json");
+		response.getWriter().write(ObjectToJsonString(authentication));
+		response.getWriter().flush();
+		response.getWriter().close();
+
 		handle(request, response, authentication);
+
 		clearAuthenticationAttributes(request);
 	}
 

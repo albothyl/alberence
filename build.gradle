@@ -39,6 +39,7 @@ ext {
     commonsIoVersion = '2.5'
     commonsLang3Version = '3.4'
     jacocoVersion = '0.7.7.201606060606'
+    jacksonVesion = '2.8.3'
 
 //  Test ==================================
     spockVersion = '1.0-groovy-2.4'
@@ -104,6 +105,7 @@ subprojects {
         // Util =======================================================
         compile("org.projectlombok:lombok:${lombokVersion}")
         compile("com.google.guava:guava:${guavaVersion}")
+        compile(group: "com.fasterxml.jackson.core", name: "jackson-databind", version: "${jacksonVesion}")
 
         // Test =======================================================
         testCompile("org.spockframework:spock-core:${spockVersion}")
