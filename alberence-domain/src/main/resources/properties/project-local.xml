@@ -2,6 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>dataSource - local</comment>
+    <!-- -Dspring.profiles.active=local -->
+
     <!-- mysql connect parameter -->
     <entry key="base.mysql.jdbc.url">jdbc:mysql://127.0.0.1:3306/alberence?useUnicode=true&amp;characterEncoding=UTF8</entry>
     <entry key="base.mysql.jdbc.username">albothyl</entry>

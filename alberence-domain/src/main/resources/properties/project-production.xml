@@ -2,6 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>dataSource - production</comment>
+    <!-- -Dspring.profiles.active=production -->
+
     <!-- mysql connect parameter -->
     <entry key="base.mysql.jdbc.url">jdbc:mysql://127.0.0.1:3306/alberence?useUnicode=true&amp;characterEncoding=UTF8</entry>
     <entry key="base.mysql.jdbc.username">fly</entry>
